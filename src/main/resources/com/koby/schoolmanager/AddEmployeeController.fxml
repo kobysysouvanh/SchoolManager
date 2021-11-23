@@ -13,6 +13,5 @@
       <TextField fx:id="employeeJobTF" layoutX="84.0" layoutY="62.0" prefHeight="25.0" prefWidth="149.0" />
       <Label layoutX="34.0" layoutY="66.0" text="Job" />
       <Button fx:id="addEmployeeBtn" layoutX="257.0" layoutY="141.0" mnemonicParsing="false" onAction="#createEmployee" text="Done" />
-      <Button fx:id="employeeCancelBtn" layoutX="190.0" layoutY="141.0" mnemonicParsing="false" onAction="#closeWindow" text="Cancel" />
    </children>
 </AnchorPane>

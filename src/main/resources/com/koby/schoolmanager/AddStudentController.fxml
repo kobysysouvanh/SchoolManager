@@ -14,6 +14,5 @@
       <Label layoutX="17.0" layoutY="66.0" text="Grade Year" />
       <Label layoutX="35.0" layoutY="100.0" text="GPA" />
       <Button fx:id="addStudentDoneBtn" layoutX="257.0" layoutY="141.0" mnemonicParsing="false" onAction="#createStudent" text="Done" />
-      <Button fx:id="studentCancelBtn" layoutX="190.0" layoutY="141.0" mnemonicParsing="false" onAction="#closeWindow" text="Cancel" />
    </children>
 </AnchorPane>

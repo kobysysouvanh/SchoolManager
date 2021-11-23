@@ -1,22 +1,17 @@
 package com.koby.schoolmanager;
-
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.text.Text;
-
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-
 
 public class SchoolManagerController implements Initializable {
 
@@ -36,6 +31,7 @@ public class SchoolManagerController implements Initializable {
     @FXML
     public TextField studentSearch;
     ObservableList<Students> studentList = FXCollections.observableArrayList();
+    FilteredList<Students> studentData = new FilteredList<>(studentList, b -> true);
 
     //Employee
     @FXML
@@ -51,6 +47,7 @@ public class SchoolManagerController implements Initializable {
     @FXML
     public TextField employeeSearch;
     ObservableList<Employee> employeeList = FXCollections.observableArrayList();
+    FilteredList<Employee> employeeData = new FilteredList<>(employeeList, b -> true);
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -94,9 +91,12 @@ public class SchoolManagerController implements Initializable {
 
         employeeTable.setItems(employeeList);
 
+        if (studentSearch.getText() == "") {
+            studentTable.setItems(studentList);
+        }
+
 
         //Student Table Filter
-        FilteredList<Students> studentData = new FilteredList<>(studentList, b -> true);
         studentSearch.textProperty().addListener((observable, oldValue, newValue) ->{
             studentData.setPredicate(Students -> {
                 if (newValue == null || newValue.isEmpty()) {
@@ -128,7 +128,6 @@ public class SchoolManagerController implements Initializable {
         studentTable.setItems(sortedStudentList);
 
         //Employee Table Filter
-        FilteredList<Employee> employeeData = new FilteredList<>(employeeList, b -> true);
         employeeSearch.textProperty().addListener((observable, oldValue, newValue) ->{
             employeeData.setPredicate(Employee -> {
                 if (newValue == null || newValue.isEmpty()) {
@@ -161,22 +160,24 @@ public class SchoolManagerController implements Initializable {
     public void addStudent() throws IOException {
         Students s = AddStudentController.display();
         studentList.add(s);
+
+
     }
 
     public void removeStudent(){
-        studentTable.getItems().removeAll(
-                studentTable.getSelectionModel().getSelectedItems()
-        );
+        Students selectedItem = studentTable.getSelectionModel().getSelectedItem();
+        studentData.getSource().remove(selectedItem);
+
     }
 
     public void addEmployee() throws IOException {
         Employee e = AddEmployeeController.display();
         employeeList.add(e);
+
     }
 
     public void removeEmployee() {
-        employeeTable.getItems().removeAll(
-                employeeTable.getSelectionModel().getSelectedItems()
-        );
+        Employee selectedItem = employeeTable.getSelectionModel().getSelectedItem();
+        employeeData.getSource().remove(selectedItem);
     }
 }

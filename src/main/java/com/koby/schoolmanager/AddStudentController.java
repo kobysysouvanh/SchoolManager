@@ -45,8 +45,4 @@ public class AddStudentController {
         window.close();
 
     }
-
-    public void closeWindow() {
-        window.close();
-    }
 }

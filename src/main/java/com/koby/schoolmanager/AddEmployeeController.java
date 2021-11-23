@@ -3,6 +3,7 @@ package com.koby.schoolmanager;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -16,6 +17,7 @@ public class AddEmployeeController {
     public TextField employeeNameTF;
     @FXML
     public TextField employeeJobTF;
+    public Button addEmployeeBtn;
 
 
     public static Employee display() throws IOException {
@@ -35,10 +37,6 @@ public class AddEmployeeController {
         String job = employeeJobTF.getText();
 
         e = new Employee(name, job);
-        window.close();
-    }
-
-    public void closeWindow() {
         window.close();
     }
 }
