@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane prefHeight="174.0" prefWidth="316.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.koby.schoolmanager.AddEmployeeController">
+   <children>
+      <TextField fx:id="employeeNameTF" layoutX="84.0" layoutY="24.0" />
+      <Label layoutX="19.0" layoutY="28.0" text="Full Name" textAlignment="CENTER" />
+      <TextField fx:id="employeeJobTF" layoutX="84.0" layoutY="62.0" prefHeight="25.0" prefWidth="149.0" />
+      <Label layoutX="34.0" layoutY="66.0" text="Job" />
+      <Button fx:id="addEmployeeBtn" layoutX="257.0" layoutY="141.0" mnemonicParsing="false" onAction="#createEmployee" text="Done" />
+      <Button fx:id="employeeCancelBtn" layoutX="190.0" layoutY="141.0" mnemonicParsing="false" onAction="#closeWindow" text="Cancel" />
+   </children>
+</AnchorPane>
